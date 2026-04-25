@@ -1,0 +1,178 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: #fff;
+
+  /* BACKGROUND */
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 45, 117, 0.25), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255, 45, 117, 0.15), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.1), transparent 50%),
+    linear-gradient(135deg, #050505, #12070d, #1a0a14);
+
+  overflow-x: hidden;
+}
+
+/* VIGNETTE */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.6));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* GRAIN */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  z-index: 2;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1500px;
+  height: 10900px;
+  margin: auto;
+  padding: 50px 16px;
+  position: relative;
+  z-index: 3;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: #ff2d75;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-weight: bold;
+  font-size: 22px;
+
+  box-shadow:
+    0 0 30px rgba(255, 45, 117, 0.3),
+    0 0 60px rgba(255, 45, 117, 0.15);
+}
+
+.hero h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: #b3b3b3;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 0 10px;
+}
+
+/* ========================= */
+/* GRID SYSTEM (FIXED PART) */
+/* ========================= */
+
+.projects {
+  display: grid;
+  gap: 16px;
+
+  /* MOBILE FIRST: 2 columns */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* TABLET */
+@media (min-width: 640px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* SMALL LAPTOP */
+@media (min-width: 900px) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* LARGE SCREEN */
+@media (min-width: 1200px) {
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* CARD */
+.card {
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  /* IMPORTANT for grid consistency */
+  display: flex;
+  flex-direction: column;
+}
+
+/* HOVER */
+.card:hover {
+  transform: translateY(-9px);
+  border-color: rgba(255, 45, 117, 0.5);
+  box-shadow: #ff2d75 0px 10px 20px -5px, rgba(255, 45, 117, 0.25) 0px 20px 40px -10px;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* CONTENT */
+.card-info {
+  padding: 12px;
+}
+
+.card-info h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.card-info p {
+  color: #9a9a9a;
+  font-size: 12px;
+}
+
+/* TOUCH OPTIMIZATION */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* SELECTION */
+::selection {
+  background: #ff2d75;
+  color: #fff;
+}
